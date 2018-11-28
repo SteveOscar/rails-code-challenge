@@ -56,8 +56,9 @@ end
 
 group :test do
   gem 'shoulda-matchers', '4.0.0.rc1'
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 
