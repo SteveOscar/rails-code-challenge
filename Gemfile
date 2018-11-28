@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+# Pry for debuggin
+gem 'rails-pry'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,6 +42,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem "database_cleaner"
 end
 
 group :development do
@@ -53,6 +56,8 @@ end
 
 group :test do
   gem 'shoulda-matchers', '4.0.0.rc1'
+  gem "capybara"
+  gem "selenium-webdriver"
 end
 
 
