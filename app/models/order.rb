@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+  has_many :line_items
+  accepts_nested_attributes_for :line_items
+  
   scope :shipped, -> { where.not(shipped_at: nil).order(shipped_at: :asc) }
   scope :unshipped, -> { where(shipped_at: nil) }
 

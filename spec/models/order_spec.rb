@@ -20,7 +20,7 @@ RSpec.describe Order, type: :model do
       it 'returns the shipped orders in the correct order' do
         first_shipped = Order.where.not(shipped_at: nil).order(shipped_at: :asc).first
         last_shipped = Order.where.not(shipped_at: nil).order(shipped_at: :asc).last
-        binding.pry
+
         expect(Order.shipped.count).to eq Order.where.not(shipped_at: nil).count
         expect(Order.shipped.first).to eq first_shipped
         expect(Order.shipped.last).to eq last_shipped
