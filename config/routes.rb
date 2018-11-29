@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :orders, except: [:destroy, :update]
+  resources :orders, except: [:destroy]
 end

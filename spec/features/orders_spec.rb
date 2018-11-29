@@ -41,4 +41,24 @@ RSpec.feature 'Order management', :type => :feature do
     expect(LineItem.count).to eq initial_line_item_count + 1
   end
 
+  it 'the orders#edit page allows the expedited attribute to be changed' do
+    order = Order.first
+    expect(order.expedited).to eq false
+    expect(order.returnable).to eq false
+    expect(order.warehoused).to eq false
+
+    visit edit_order_path(order)
+
+    find(:css, "#order_expedited").set(true)
+    find(:css, "#order_returnable").set(true)
+    find(:css, "#order_warehoused").set(true)
+
+    click_button 'Update Order'
+
+    order.reload
+    expect(order.expedited).to eq true
+    expect(order.returnable).to eq true
+    expect(order.warehoused).to eq true
+  end
+
 end

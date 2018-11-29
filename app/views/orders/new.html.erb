@@ -1,2 +1,6 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
 <h1>Create a new order</h1>
 <%= render partial: 'form' %>

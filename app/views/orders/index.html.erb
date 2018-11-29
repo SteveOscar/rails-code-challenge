@@ -8,14 +8,14 @@
     <h3>Shipped Orders:</h3>
     <ul>
     <% @orders.shipped.each do |order| %>
-      <li>Order ID: <%= link_to order.id, order_path(order) %> (shipping date: <%=order.display_shipping%>)</li>
+      <li>Order ID: <%= link_to order.id, edit_order_path(order) %> (shipping date: <%=order.display_shipping%>)</li>
     <% end %>
     </ul>
 
     <h3>Unshipped Orders:</h3>
     <ul>
     <% @orders.unshipped.each do |order| %>
-      <li>Order ID: <%= link_to order.id, order_path(order) %></li>
+      <li>Order ID: <%= link_to order.id, edit_order_path(order) %></li>
     <% end %>
     </ul>
   </body>
