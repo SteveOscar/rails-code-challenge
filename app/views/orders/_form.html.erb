@@ -1,4 +1,18 @@
 <%= form_for @order do |f| %>
+  Line Items:
+  <ul>
+    <%= f.fields_for :line_items do |line_item| %>
+      <%= line_item.label :quantity %>
+      <%= line_item.text_field :quantity %>
+
+      <%= line_item.label :unit_price %>
+      <%= line_item.text_field :unit_price %>
+
+      <%= line_item.label :widget %>
+      <%= line_item.collection_select :widget_id, @widgets, :id, :name %>
+      <br/>
+    <% end %>
+  </ul>
   <p>
     <%= f.submit 'Create Order' %>
   </p>
