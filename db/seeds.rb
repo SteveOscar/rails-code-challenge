@@ -15,3 +15,14 @@ puts '***** Creating Widgets *****'
 10.times { Widget.create!(name: create_random_string, msrp: rand(100)) }
 
 puts "***** Done! #{Order.count} orders were created. #{Widget.count} Widgets were created. *****"
+
+puts <<-'EOF'
+ _____       _             _   _       _
+|  __ \     | |           | \ | |     | |
+| |__) |   _| |__  _   _  |  \| | ___ | |_ ___
+|  _  / | | | '_ \| | | | | . ` |/ _ \| __/ _ \
+| | \ \ |_| | |_) | |_| | | |\  | (_) | |_  __/
+|_|  \_\__,_|_.__/ \__, | |_| \_|\___/ \__\___|
+                    __/ |
+                   |___/
+EOF
