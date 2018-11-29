@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   has_many :line_items
-  accepts_nested_attributes_for :line_items, reject_if: proc { |attributes| missing_attributes(attributes) }
+  accepts_nested_attributes_for :line_items, reject_if: proc {
+    |atts| atts[:quantity].blank? || atts[:unit_price].blank? || atts[:widget_id].blank?
+  }
 
   scope :shipped, -> { where.not(shipped_at: nil).order(shipped_at: :asc) }
   scope :unshipped, -> { where(shipped_at: nil) }
@@ -29,12 +31,5 @@ class Order < ApplicationRecord
 
   def display_shipping
     shipped_at.strftime("%m/%d/%Y at %I:%M %p")
-  end
-
-  private
-
-  # TODO: not sure this is setup correctly
-  def missing_attributes(attributes)
-    attributes[:quantity].blank? || attributes[:unit_price].blank? || attributes[:widget_id].blank?
   end
 end

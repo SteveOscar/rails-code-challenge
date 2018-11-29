@@ -27,4 +27,18 @@ RSpec.feature 'Order management', :type => :feature do
     select(Widget.first.name, from: 'order_line_items_attributes_0_widget_id')
   end
 
+  it 'the orders#new page creates the desired records' do
+    initial_line_item_count = LineItem.count
+    initial_order_count = Order.count
+    visit new_order_path
+
+    fill_in('order_line_items_attributes_0_unit_price', with: 5)
+    fill_in('order_line_items_attributes_0_quantity', with: 10)
+    select(Widget.first.name, from: 'order_line_items_attributes_0_widget_id')
+    click_button 'Create Order'
+
+    expect(Order.count).to eq initial_order_count + 1
+    expect(LineItem.count).to eq initial_line_item_count + 1
+  end
+
 end
