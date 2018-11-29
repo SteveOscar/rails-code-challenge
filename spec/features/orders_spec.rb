@@ -7,8 +7,9 @@ RSpec.feature 'Order management', :type => :feature do
     visit orders_path
 
     expect(current_path).to eq orders_path
-    expect(page).to have_text("Orders")
-    expect(page).to have_text(order.id)
+    expect(page).to have_text("Shipped Orders")
+    expect(page).to have_text("Order ID: #{Order.first.id}")
+    expect(page).to have_text(Order.last.id)
   end
 
 end
